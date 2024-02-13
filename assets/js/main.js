@@ -168,9 +168,9 @@ const earthGeometry = new THREE.SphereGeometry(5, 64, 64);
 const earthMaterial = new THREE.MeshStandardMaterial({
   roughness: 1,
   metalness: 0,
-  map: new THREE.TextureLoader().load('./assets/img/texture/earth-day-map.jpg'),
-  bumpMap: new THREE.TextureLoader().load('./assets/img/texture/earthbump.jpg'),
-  bumpScale: 50
+  map: new THREE.TextureLoader().load('https://i.ibb.co/frPfGFW/earth-day-map.jpg'),
+  bumpMap: new THREE.TextureLoader().load('https://i.ibb.co/St1Tgc3/earthbump.jpg'),
+  bumpScale: 10
 });
 const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
 scene.add(earthMesh);
@@ -189,7 +189,7 @@ scene.add(pointerLight);
 // Cloud:
 const cloudGeometry = new THREE.SphereGeometry(5.15, 64, 64);
 const cloudMaterial = new THREE.MeshStandardMaterial({
-  map: new THREE.TextureLoader().load('./assets/img/texture/earthCloud.png'),
+  map: new THREE.TextureLoader().load('https://i.ibb.co/CsytfFt/earth-Cloud.png'),
   transparent: true
 });
 const cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial);
@@ -198,7 +198,7 @@ scene.add(cloudMesh);
 // Star:
 const starGeometry = new THREE.SphereGeometry(80, 64, 64);
 const starMaterial = new THREE.MeshBasicMaterial({
-  map: new THREE.TextureLoader().load('./assets/img/texture/stars-milky-way.jpg'),
+  map: new THREE.TextureLoader().load('https://i.ibb.co/51H5fgW/stars-milky-way.jpg'),
   side: THREE.BackSide
 });
 const starMesh = new THREE.Mesh(starGeometry, starMaterial);
