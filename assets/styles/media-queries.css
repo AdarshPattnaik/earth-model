@@ -1,0 +1,41 @@
+@media only screen and (max-width:425px) {
+    .input-box {
+        width: 90% !important;
+    }
+
+    .search-icon,
+    .cross-icon {
+        top: 20px !important;
+        left: 20px !important;
+    }
+
+    .clip-icon,
+    .right-icon {
+        top: 16px !important;
+        right: 20px !important;
+    }
+
+    .data-corner {
+        padding: 20px !important;
+        gap: 20px !important;
+    }
+
+    .data-corner h2 {
+        font-size: 20px !important;
+    }
+
+    .data-content {
+        gap: 20px !important;
+    }
+
+    .refresh-btn {
+        top: 13px !important;
+        left: 60px !important;
+    }
+}
+
+@media only screen and (max-width:340px) {
+    .data-box {
+        width: 100% !important;
+    }
+}

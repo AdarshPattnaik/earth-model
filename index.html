@@ -1,0 +1,127 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="./assets/img/favicon/favicon.ico" />
+  <title>Interactive 3D Earth • Country Data Visualization</title>
+  <link rel="stylesheet" href="./assets/styles/style.css" />
+  <link rel="stylesheet" href="./assets/styles/media-queries.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body style="margin: 0;">
+
+  <div class="loader-container">
+    <img src="./assets/img/loader/page-loader.gif" alt="page-loader/gif" />
+  </div>
+
+  <!-- Refresh Button starts -->
+  <button class="refresh-btn">
+    Reset
+  </button>
+  <!-- Refresh Button ends -->
+
+  <!-- ~~~~~ Search Field starts ~~~~~ -->
+  <button class="search-icon" id="searchIcon">
+    <img src="./assets/img/icons/search-icon.svg" alt="search-icon/svg" />
+  </button>
+  <section class="search-box" id="searchBar">
+
+    <button class="cross-icon" id="crossIcon">
+      <img src="./assets/img/icons/cross-icon.svg" alt="cross-icon/svg" />
+    </button>
+
+    <div class="input-box">
+      <input type="text" autocomplete="Off" placeholder="Search by Country" id="search-input" name="country-name" />
+      <div class="result-box">
+        <ul>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+  <!-- ~~~~~ Search Field ends ~~~~~ -->
+
+  <!-- ~~~~~ Data Corner starts ~~~~~ -->
+  <button class="clip-icon" id="#clipIcon" onclick="toggleDataCorner()">
+    <img src="./assets/img/icons/clipboard-icon.svg" alt="clipboard-icon/svg" />
+  </button>
+  <section class="data-corner" id="dataCorner">
+    <div class="data-header">
+      <h2>Country Corner</h2>
+      <button class="right-icon" id="#rightIcon" onclick="toggleDataCorner()">
+        <img src="./assets/img/icons/right-arrow-icon.svg" alt="right-arrow-icon/svg" />
+      </button>
+    </div>
+
+    <div class="data-content" id="dataContent">
+      <!-- Data Boxes will appear here -->
+    </div>
+    <h3 id="emptyTag">Your Country Corner is currently empty</h3>
+  </section>
+  <!-- ~~~~~ Data Corner ends ~~~~~ -->
+
+  <!-- ~~~~~ Earth Globe starts ~~~~~ -->
+  <canvas id="globe-container" width="100vw" height="100vh"></canvas>
+  <!-- ~~~~~ Earth Globe ends ~~~~~ -->
+
+  <!--  ~~~~~ Footer starts ~~~~~ -->
+  <footer>
+    <p>
+      Designed and developed by <span>Adarsh Pattnaik</span> • The data visualized on this platform pertains to historical periods, specifically in the range of 2018-2019. ©
+      <span id="currentYear"></span>
+    </p>
+  </footer>
+  <!--  ~~~~~ Footer ends ~~~~~ -->
+
+
+  <!-- ~~~~~ Scripts starts ~~~~~ -->
+  <!-- Include Three.js from a CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.137.0/build/three.min.js"></script>
+
+  <!-- Include OrbitControls from the Three.js examples -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.137.0/examples/js/controls/OrbitControls.js"></script>
+
+  <!-- Include GSAP from a CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.10.4/dist/gsap.min.js"></script>
+
+  <!-- Basic Logic: -->
+  <script type="module" src="./assets/js/base.js"></script>
+
+  <!-- 3D Model: -->
+  <script src="./assets/js/main.js"></script>
+
+  <!-- API Fetching: -->
+  <script src="./assets/js/api.js"></script>
+  <!-- ~~~~~ Scripts ends ~~~~~ -->
+  <script>
+    document.querySelector('.loader-container').style.display = 'flex';
+    setTimeout(() => {
+      document.querySelector('.loader-container').style.display = 'none';
+    }, 1000);
+    function toggleDataCorner() {
+      dataCorner.classList.toggle('active');
+    };
+    document.querySelector('.clip-icon').addEventListener('click', function () {
+      if (document.querySelector('.clip-icon').classList.contains('active')) {
+        document.querySelector('.clip-icon').classList.remove('active');
+      }
+    });
+    document.querySelector('.refresh-btn').addEventListener('click', () => {
+      location.reload();
+    });
+    // Get the current year and set it in the span with id "currentYear"
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
